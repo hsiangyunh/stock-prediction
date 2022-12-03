@@ -17,7 +17,8 @@ from sklearn.preprocessing import MinMaxScaler
 
 # Step 1: Import data
 
-business = "AMZN"
+business = input("enter company ticker name: ")
+business = business.upper()
 
 start_date = dt.datetime(2019,1,1)
 end_date = dt.datetime(2022,1,1)
@@ -29,7 +30,7 @@ stock_data = pdr.DataReader(business,'yahoo',start_date,end_date)
 sc = MinMaxScaler(feature_range=(0,1))
 sc_data = sc.fit_transform(stock_data['Adj Close'].values.reshape(-1,1))
 
-days_of_prediction = 30 
+days_of_prediction = int(input("enter days of prediction: ")) 
 
 A = []
 B = []
